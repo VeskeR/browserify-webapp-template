@@ -15,7 +15,7 @@ module.exports = function (grunt) {
           '.tmp/scripts/main.js': ['app/scripts/main.js']
         }
       },
-      dist: {
+      build: {
         options: {
           browserifyOptions: {
             debug: false
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
       serve: {
         src: ['.tmp/']
       },
-      dist: {
+      build: {
         src: ['dist/']
       }
     },
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
           '.tmp/styles/main.css': ['app/styles/main.scss']
         }
       },
-      dist: {
+      build: {
         options: {
           sourceMap: false
         },
