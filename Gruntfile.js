@@ -51,6 +51,9 @@ module.exports = function (grunt) {
           'dist/styles/main.css': ['app/styles/main.scss']
         }
       }
+    },
+    wiredep: {
+      src: ['app/**/*.html']
     }
   });
 
