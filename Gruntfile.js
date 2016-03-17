@@ -5,12 +5,22 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     browserify: {
+      options: {
+        browserifyOptions: {
+          debug: true
+        }
+      },
       serve: {
         files: {
           '.tmp/scripts/main.js': ['app/scripts/main.js']
         }
       },
       dist: {
+        options: {
+          browserifyOptions: {
+            debug: false
+          }
+        },
         files: {
           'dist/scripts/main.js': ['app/scripts/main.js']
         }
