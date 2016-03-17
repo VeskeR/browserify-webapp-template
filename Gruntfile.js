@@ -1,10 +1,27 @@
 'use strict';
 module.exports = function (grunt) {
-  var packageConfig = grunt.file.readJSON('package.json');
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
-
+    pkg: grunt.file.readJSON('package.json'),
+    sass: {
+      options: {
+        sourceMap: true
+      },
+      serve: {
+        files: {
+          '.tmp/styles/main.css': ['app/styles/main.scss']
+        }
+      },
+      dist: {
+        options: {
+          sourceMap: false
+        },
+        files: {
+          'dist/styles/main.css': ['app/styles/main.scss']
+        }
+      }
+    }
   });
 
   grunt.registerTask('default', []);
