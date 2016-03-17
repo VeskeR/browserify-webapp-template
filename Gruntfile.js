@@ -4,6 +4,18 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    browserify: {
+      serve: {
+        files: {
+          '.tmp/scripts/main.js': ['app/scripts/main.js']
+        }
+      },
+      dist: {
+        files: {
+          'dist/scripts/main.js': ['app/scripts/main.js']
+        }
+      }
+    },
     clean: {
       serve: {
         src: ['.tmp/']
