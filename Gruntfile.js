@@ -45,8 +45,12 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
+          livereload: false,
+          keepalive: true,
           open: 'localhost:9000/dist/',
-          base: 'dist'
+          base: [
+            'dist'
+          ]
         }
       }
     },
@@ -80,19 +84,19 @@ module.exports = function (grunt) {
       bower: {
         files: ['bower_components'],
         tasks: [
-
+          'wiredep'
         ]
       },
       js: {
         files: ['app/**/*.js'],
         tasks: [
-
+          'browserify:serve'
         ]
       },
       sass: {
-        files: ['app/**/*.scss'],
+        files: ['app/**/*.{scss,sass}'],
         tasks: [
-
+          'sass:serve'
         ]
       },
       serve: {
@@ -102,16 +106,6 @@ module.exports = function (grunt) {
         },
         files: [
           '.tmp/**/*.{js,css,html,jpg,png,svg,gif,json}',
-          'app/**/*.html'
-        ]
-      },
-      dist: {
-        options: {
-          livereload: 9000,
-          interrupt: false
-        },
-        files: [
-          'dist/**/*.{js,css,html,jpg,png,svg,gif,json}',
           'app/**/*.html'
         ]
       }
