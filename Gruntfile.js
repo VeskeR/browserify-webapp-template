@@ -15,7 +15,7 @@ module.exports = function (grunt) {
           '.tmp/scripts/main.js': ['app/scripts/main.js']
         }
       },
-      build: {
+      dist: {
         files: {
           'dist/scripts/main.js': ['app/scripts/main.js']
         }
@@ -25,8 +25,29 @@ module.exports = function (grunt) {
       serve: {
         src: ['.tmp/']
       },
-      build: {
+      dist: {
         src: ['dist/']
+      }
+    },
+    connect: {
+      options: {
+        port: 9000,
+        hostname: 'localhost',
+        livereload: 9000
+      },
+      serve: {
+        options: {
+          open: 'http://localhost:9000/app/index.html',
+          base: [
+            '.'
+          ]
+        }
+      },
+      dist: {
+        options: {
+          open: 'localhost:9000/dist/',
+          base: 'dist'
+        }
       }
     },
     sass: {
@@ -38,7 +59,7 @@ module.exports = function (grunt) {
           '.tmp/styles/main.css': ['app/styles/main.scss']
         }
       },
-      build: {
+      dist: {
         files: {
           'dist/styles/main.css': ['app/styles/main.scss']
         }
