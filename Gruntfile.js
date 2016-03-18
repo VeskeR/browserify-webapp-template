@@ -123,7 +123,7 @@ module.exports = function (grunt) {
       },
       serve: {
         options: {
-          livereload: true,
+          livereload: '<%= connect.options.livereload %>',
           interrupt: false
         },
         files: [
