@@ -72,6 +72,49 @@ module.exports = function (grunt) {
       task: {
         src: ['app/**/*.html']
       }
+    },
+    watch: {
+      options: {
+        interrupt: true
+      },
+      bower: {
+        files: ['bower_components'],
+        tasks: [
+
+        ]
+      },
+      js: {
+        files: ['app/**/*.js'],
+        tasks: [
+
+        ]
+      },
+      sass: {
+        files: ['app/**/*.scss'],
+        tasks: [
+
+        ]
+      },
+      serve: {
+        options: {
+          livereload: 9000,
+          interrupt: false
+        },
+        files: [
+          '.tmp/**/*.{js,css,html,jpg,png,svg,gif,json}',
+          'app/**/*.html'
+        ]
+      },
+      dist: {
+        options: {
+          livereload: 9000,
+          interrupt: false
+        },
+        files: [
+          'dist/**/*.{js,css,html,jpg,png,svg,gif,json}',
+          'app/**/*.html'
+        ]
+      }
     }
   });
 
