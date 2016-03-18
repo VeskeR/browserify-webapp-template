@@ -54,6 +54,33 @@ module.exports = function (grunt) {
         }
       }
     },
+    postcss: {
+      options: {
+        map: true,
+        processors: [
+          require('autoprefixer')({ browsers: ['last 2 versions', 'ie 8', 'ie 9'] })
+        ]
+      },
+      serve: {
+        files: [{
+          expand: true,
+          cwd: '.tmp',
+          src: 'styles/**/*.css',
+          dest: '.tmp'
+        }]
+      },
+      dist: {
+        options: {
+          map: false
+        },
+        files: [{
+          expand: true,
+          cwd: 'dist',
+          src: 'styles/**/*.css',
+          dest: 'dist'
+        }]
+      }
+    },
     sass: {
       serve: {
         options: {
@@ -67,14 +94,6 @@ module.exports = function (grunt) {
         files: {
           'dist/styles/main.css': ['app/styles/main.scss']
         }
-      }
-    },
-    wiredep: {
-      options: {
-        ignorePath: /^(\.\.\/)*\.\./
-      },
-      task: {
-        src: ['app/**/*.html']
       }
     },
     watch: {
@@ -96,7 +115,8 @@ module.exports = function (grunt) {
       sass: {
         files: ['app/**/*.{scss,sass}'],
         tasks: [
-          'sass:serve'
+          'sass:serve',
+          'postcss:serve'
         ]
       },
       serve: {
@@ -109,7 +129,15 @@ module.exports = function (grunt) {
           'app/**/*.html'
         ]
       }
-    }
+    },
+    wiredep: {
+      options: {
+        ignorePath: /^(\.\.\/)*\.\./
+      },
+      task: {
+        src: ['app/**/*.html']
+      }
+    },
   });
 
   grunt.registerTask('default', []);
