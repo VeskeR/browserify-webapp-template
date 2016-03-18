@@ -34,6 +34,33 @@ module.exports = function (grunt) {
         src: ['dist/']
       }
     },
+    postcss: {
+      options: {
+        map: true,
+        processors: [
+          require('autoprefixer')({ browsers: ['last 2 versions', 'ie 8', 'ie 9'] })
+        ]
+      },
+      serve: {
+        files: [{
+          expand: true,
+          cwd: '.tmp',
+          src: 'styles/**/*.css',
+          dest: '.tmp'
+        }]
+      },
+      dist: {
+        options: {
+          map: false
+        },
+        files: [{
+          expand: true,
+          cwd: 'dist',
+          src: 'styles/**/*.css',
+          dest: 'dist'
+        }]
+      }
+    },
     sass: {
       options: {
         sourceMap: true
