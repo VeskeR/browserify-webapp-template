@@ -49,11 +49,24 @@ module.exports = function (grunt) {
         options: {
           livereload: false,
           keepalive: true,
-          open: 'localhost:9000/dist/',
+          open: 'http://localhost:9000/dist/index.html',
           base: [
-            'dist'
+            '.'
           ]
         }
+      }
+    },
+    copy: {
+      options: {
+        encoding: 'utf-8'
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'app',
+          src: '**/*.html',
+          dest: 'dist'
+        }]
       }
     },
     postcss: {
@@ -155,7 +168,8 @@ module.exports = function (grunt) {
     'clean',
     'browserify:dist',
     'sass:dist',
-    'postcss:dist'
+    'postcss:dist',
+    'copy:dist'
   ]);
 
   grunt.registerTask('serve:dist', [
