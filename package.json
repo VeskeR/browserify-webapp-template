@@ -16,5 +16,8 @@
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "load-grunt-tasks": "^3.4.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "^1.0.0"
   }
 }
