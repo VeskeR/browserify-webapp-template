@@ -53,7 +53,12 @@ module.exports = function (grunt) {
       }
     },
     wiredep: {
-      src: ['app/**/*.html']
+      options: {
+        ignorePath: /^(\.\.\/)*\.\./
+      },
+      task: {
+        src: ['app/**/*.html']
+      }
     }
   });
 
