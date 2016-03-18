@@ -33,13 +33,15 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         hostname: 'localhost',
-        livereload: 9000
+        livereload: true
       },
       serve: {
         options: {
           open: 'http://localhost:9000/app/index.html',
           base: [
-            '.'
+            '.',
+            'app',
+            '.tmp'
           ]
         }
       },
@@ -101,7 +103,7 @@ module.exports = function (grunt) {
         interrupt: true
       },
       bower: {
-        files: ['bower_components'],
+        files: ['bower.json'],
         tasks: [
           'wiredep'
         ]
@@ -121,7 +123,7 @@ module.exports = function (grunt) {
       },
       serve: {
         options: {
-          livereload: 9000,
+          livereload: true,
           interrupt: false
         },
         files: [
@@ -140,5 +142,28 @@ module.exports = function (grunt) {
     },
   });
 
-  grunt.registerTask('default', []);
+  grunt.registerTask('serve', [
+    'clean',
+    'browserify:serve',
+    'sass:serve',
+    'postcss:serve',
+    'connect:serve',
+    'watch'
+  ]);
+
+  grunt.registerTask('build', [
+    'clean',
+    'browserify:dist',
+    'sass:dist',
+    'postcss:dist'
+  ]);
+
+  grunt.registerTask('serve:dist', [
+    'build',
+    'connect:dist'
+  ]);
+
+  grunt.registerTask('default', [
+    'build'
+  ]);
 }
