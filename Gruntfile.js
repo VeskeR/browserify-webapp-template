@@ -51,6 +51,14 @@ module.exports = function (grunt) {
           'dist/styles/main.css': ['app/styles/main.scss']
         }
       }
+    },
+    wiredep: {
+      options: {
+        ignorePath: /^(\.\.\/)*\.\./
+      },
+      task: {
+        src: ['app/**/*.html']
+      }
     }
   });
 
