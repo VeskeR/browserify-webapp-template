@@ -1,6 +1,6 @@
 {
   "name": "browserify-webapp-template",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Template for generating basic web application layout with configured grunt and browserify",
   "repository": {
     "type": "git",
