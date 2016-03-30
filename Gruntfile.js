@@ -97,6 +97,16 @@ module.exports = function (grunt) {
         }
       }
     },
+    processhtml: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'app',
+          src: '**/*.html',
+          dest: 'dist'
+        }]
+      }
+    },
     sass: {
       serve: {
         options: {
@@ -178,7 +188,8 @@ module.exports = function (grunt) {
     'sass:dist',
     'uglify:dist',
     'postcss:dist',
-    'copy:dist'
+    'copy:dist',
+    'processhtml:dist'
   ]);
 
   grunt.registerTask('serve:dist', [
